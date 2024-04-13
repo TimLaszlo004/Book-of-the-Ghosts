@@ -254,7 +254,7 @@ Material:
     m_Colors:
     - Color_e33122dd1341407eb6ef24a34b660f09: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.3788642, g: 0.5665628, b: 0.9065925, a: 1}
-    - _Color: {r: 0.37886417, g: 0.5665628, b: 0.9065925, a: 1}
+    - _Color: {r: 0.3788642, g: 0.5665628, b: 0.9065925, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
