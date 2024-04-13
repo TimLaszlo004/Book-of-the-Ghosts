@@ -20,6 +20,13 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		[Header("Spells")]
+		public bool red = false;
+		public bool blue = false;
+		public bool green = false;
+		public bool white = false;
+
+
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
@@ -42,6 +49,32 @@ namespace StarterAssets
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
+		}
+
+		public void OnCursorLock(InputValue value)
+		{
+			cursorLocked = !cursorLocked;
+			CursorInput();
+		}
+
+		public void OnAttack1(InputValue value)
+		{
+			AttackInput(1, value.isPressed);
+		}
+
+		public void OnAttack2(InputValue value)
+		{
+			AttackInput(2, value.isPressed);
+		}
+
+		public void OnAttack3(InputValue value)
+		{
+			AttackInput(3, value.isPressed);
+		}
+
+		public void OnAttack4(InputValue value)
+		{
+			AttackInput(4, value.isPressed);
 		}
 #endif
 
@@ -66,9 +99,31 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
-		private void OnApplicationFocus(bool hasFocus)
+		public void CursorInput()
 		{
 			SetCursorState(cursorLocked);
+		}
+
+		// private void OnApplicationFocus(bool hasFocus)
+		// {
+		// 	SetCursorState(cursorLocked);
+		// }
+
+		public void AttackInput(int spell, bool isPressed){
+			switch(spell){
+				case 1:
+					red = isPressed;
+					break;
+				case 2:
+					blue = isPressed;
+					break;
+				case 3:
+					green = isPressed;
+					break;
+				case 4:
+					white = isPressed;
+					break;
+			}
 		}
 
 		private void SetCursorState(bool newState)

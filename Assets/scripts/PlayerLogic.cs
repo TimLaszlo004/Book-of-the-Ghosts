@@ -41,16 +41,14 @@ public class PlayerLogic : MonoBehaviour
         position = armature.transform.position;
     }
 
-    void attack(){
+    void attack(DemonColor color){
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
                 
         foreach (var hitCollider in hitColliders)
         {
 
             if(hitCollider.transform.parent.CompareTag("enemy")){
-
-                
-
+                hitCollider.GetComponent<DemonController>().getSpell(color);
             }
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DemonController : MonoBehaviour
 {
     [Header("Logic")]
-    [SerializeField] private List<DemonColor> lifeStack = new List<DemonColor>();
+    [SerializeField] private List<DemonColor> lifeStack = new List<DemonColor>(); // queue would be better, but I need to be fast now
     [SerializeField] private float speed = 5f;
     [SerializeField] private float damage = 4f;
     [SerializeField] private float eyeSight = 40f;
@@ -70,5 +70,14 @@ public class DemonController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void getSpell(DemonColor color){
+        if(color == lifeStack[0]){
+            lifeStack.RemoveAt(0);
+        }
+        if(lifeStack.Count == 0){
+            Debug.Log("dead");
+        }
     }
 }
