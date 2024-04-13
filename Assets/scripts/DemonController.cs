@@ -8,6 +8,7 @@ public class DemonController : MonoBehaviour
     [SerializeField] private List<DemonColor> lifeStack = new List<DemonColor>(); // queue would be better, but I need to be fast now
     [SerializeField] private float speed = 5f;
     [SerializeField] private float damage = 4f;
+    [SerializeField] private float biteRange = 0.75f;
     [SerializeField] private float eyeSight = 40f;
     [SerializeField] private float looseSight = 60f;
     [Header("Updating")]
@@ -24,6 +25,7 @@ public class DemonController : MonoBehaviour
 
     void Update()
     {
+        if(GameplayRegister.Instance.isEnded){updateOn = false;return;}
         // go towards player if attacking
         if(isAttacking){
             //chase player
@@ -46,6 +48,9 @@ public class DemonController : MonoBehaviour
 
     void FakeUpdate(){
         attackStatusUpdate();
+        if(General.Distance3(transform.position, PlayerLogic.position) < biteRange){
+            PlayerLogic.health -= damage;
+        }
     }
 
     void attackStatusUpdate(){
@@ -76,11 +81,13 @@ public class DemonController : MonoBehaviour
         if(color.Equals(lifeStack[0])){
             lifeStack.RemoveAt(0);
         }
-        else{
-            Debug.Log("fuck");
-        }
         if(lifeStack.Count == 0){
-            Debug.Log("dead");
+            die();
         }
     }
+
+    void die(){
+        Destroy(gameObject);
+    }
+
 }

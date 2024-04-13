@@ -10,6 +10,7 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private float updateInterval = 0.2f;
     [SerializeField] private GameObject armature;
     [SerializeField] private float initHealth = 100f;
+    [SerializeField] private float healthReloadSpeed = 0.5f;
     [SerializeField] private float attackRange = 5f;
     [Header("Spell Management")]
     [SerializeField] private float reloadTime = 0.15f;
@@ -24,13 +25,16 @@ public class PlayerLogic : MonoBehaviour
         health = initHealth;
         FakeUpdateCaller();
     }
-
-
     void Update()
     {
         // mostly input handling
         // Debug.Log(inputs.spellId);
-
+        if(GameplayRegister.Instance.isEnded){return;}
+        if(health <= 0f){
+            die();
+        }
+        health = Mathf.Min(health + healthReloadSpeed * Time.deltaTime, initHealth);
+        UIController.Instance.setSlider(health);
         if(runningReload > 0f){
             runningReload -= Time.deltaTime;
         }
@@ -76,14 +80,17 @@ public class PlayerLogic : MonoBehaviour
 
     void attack(DemonColor color){
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
-        // Debug.Log(hitColliders.Length);
         foreach (var hitCollider in hitColliders)
         {
-            Debug.Log(hitCollider.tag);
             if(hitCollider.CompareTag("enemy")){
                 hitCollider.GetComponent<DemonController>().getSpell(color);
             }
         }
+    }
+
+    void die(){
+        updateOn = false;
+        GameplayRegister.Instance.playerDied();
     }
 
 
