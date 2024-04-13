@@ -11,6 +11,8 @@ public class DemonController : MonoBehaviour
     [SerializeField] private float biteRange = 0.75f;
     [SerializeField] private float eyeSight = 40f;
     [SerializeField] private float looseSight = 60f;
+    [SerializeField] private float spellShockTime = 1f;
+    private float runningSpellShockTime = 0.25f;
     [Header("Updating")]
     [SerializeField] private float updateInterval = 0.1f;
     private bool updateOn = false;
@@ -26,10 +28,16 @@ public class DemonController : MonoBehaviour
     void Update()
     {
         if(GameplayRegister.Instance.isEnded){updateOn = false;return;}
+
+        //shock
+        runningSpellShockTime = Mathf.Max(runningSpellShockTime - Time.deltaTime, -1f); // avoid overflow
+        if(runningSpellShockTime > 0f){return;}
+        
         // go towards player if attacking
         if(isAttacking){
             //chase player
-            transform.position = Vector3.Lerp(transform.position, PlayerLogic.position, speed*Time.deltaTime); // TODO ???
+            transform.position = Vector3.Lerp(transform.position, PlayerLogic.position, (1f/General.Distance3(transform.position, PlayerLogic.position))*speed*Time.deltaTime);
+            // transform.position = Vector3.Lerp(transform.position, PlayerLogic.position, speed*Time.deltaTime); // (this is cheaper, but not linear --> stress test will decide)
         }
     }
 
@@ -80,9 +88,11 @@ public class DemonController : MonoBehaviour
     public void getSpell(DemonColor color){
         if(color.Equals(lifeStack[0])){
             lifeStack.RemoveAt(0);
-        }
-        if(lifeStack.Count == 0){
-            die();
+            runningSpellShockTime = spellShockTime;
+
+            if(lifeStack.Count == 0){
+                die();
+            }
         }
     }
 

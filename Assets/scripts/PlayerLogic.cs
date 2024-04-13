@@ -22,6 +22,7 @@ public class PlayerLogic : MonoBehaviour
 
     void Start()
     {
+        armature.transform.position = GameplayRegister.Instance.startPoint.position;
         health = initHealth;
         FakeUpdateCaller();
     }
@@ -89,8 +90,10 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void die(){
-        updateOn = false;
+        // updateOn = false;
         GameplayRegister.Instance.playerDied();
+        armature.transform.position = GameplayRegister.Instance.startPoint.position;
+        health = initHealth;
     }
 
 

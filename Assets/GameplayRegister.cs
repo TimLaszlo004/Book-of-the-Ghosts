@@ -6,6 +6,9 @@ public class GameplayRegister : MonoBehaviour
 {
     public static GameplayRegister Instance { get; private set; }
     public bool isEnded = false;
+
+    public Transform startPoint;
+    public Transform targetPoint;
     
     private void Awake() 
     { 
@@ -20,6 +23,6 @@ public class GameplayRegister : MonoBehaviour
     }
 
     public void playerDied(){
-        isEnded = true;
+        // isEnded = true;
     }
 }
