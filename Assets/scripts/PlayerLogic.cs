@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerLogic : MonoBehaviour
 {
     public static Vector3 position;
+    public static float health;
     [SerializeField] private float updateInterval = 0.2f;
+    [SerializeField] private GameObject armature;
+    [SerializeField] private float initHealth = 100f;
+    [SerializeField] private float attackRange = 5f;
     private bool updateOn = false;
 
     void Start()
     {
+        health = initHealth;
         FakeUpdateCaller();
     }
 
@@ -33,7 +38,21 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void FakeUpdate(){
-        position = transform.position;
+        position = armature.transform.position;
+    }
+
+    void attack(){
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+                
+        foreach (var hitCollider in hitColliders)
+        {
+
+            if(hitCollider.transform.parent.CompareTag("enemy")){
+
+                
+
+            }
+        }
     }
 
 
