@@ -73,8 +73,11 @@ public class DemonController : MonoBehaviour
     }
 
     public void getSpell(DemonColor color){
-        if(color == lifeStack[0]){
+        if(color.Equals(lifeStack[0])){
             lifeStack.RemoveAt(0);
+        }
+        else{
+            Debug.Log("fuck");
         }
         if(lifeStack.Count == 0){
             Debug.Log("dead");

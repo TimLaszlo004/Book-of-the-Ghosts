@@ -25,6 +25,7 @@ namespace StarterAssets
 		public bool blue = false;
 		public bool green = false;
 		public bool white = false;
+		public int spellId = 0; // 0-nothing 1-red, 2-blue...
 
 
 #if ENABLE_INPUT_SYSTEM
@@ -113,15 +114,19 @@ namespace StarterAssets
 			switch(spell){
 				case 1:
 					red = isPressed;
+					spellId = isPressed? 1: 0;
 					break;
 				case 2:
 					blue = isPressed;
+					spellId = isPressed? 2: 0;
 					break;
 				case 3:
 					green = isPressed;
+					spellId = isPressed? 3: 0;
 					break;
 				case 4:
 					white = isPressed;
+					spellId = isPressed? 4: 0;
 					break;
 			}
 		}
