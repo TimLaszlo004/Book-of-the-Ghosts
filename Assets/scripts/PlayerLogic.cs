@@ -18,6 +18,12 @@ public class PlayerLogic : MonoBehaviour
 
     private bool updateOn = false;
 
+    [Header("prefabs")]
+    [SerializeField] private GameObject red;
+    [SerializeField] private GameObject blue;
+    [SerializeField] private GameObject green;
+    [SerializeField] private GameObject white;
+
     [SerializeField] private StarterAssetsInputs inputs;
 
     void Start()
@@ -44,18 +50,22 @@ public class PlayerLogic : MonoBehaviour
             switch(inputs.spellId){
                 case 1:
                     attack(DemonColor.Red);
+                    Instantiate(red, armature.transform.position, armature.transform.rotation);
                     runningReload = reloadTime;
                     break;
                 case 2:
                     attack(DemonColor.Blue);
+                    Instantiate(blue, armature.transform.position, armature.transform.rotation);
                     runningReload = reloadTime;
                     break;
                 case 3:
                     attack(DemonColor.Green);
+                    Instantiate(green, armature.transform.position, armature.transform.rotation);
                     runningReload = reloadTime;
                     break;
                 case 4:
                     attack(DemonColor.White);
+                    Instantiate(white, armature.transform.position, armature.transform.rotation);
                     runningReload = reloadTime;
                     break;
             }
@@ -80,7 +90,7 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void attack(DemonColor color){
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+        Collider[] hitColliders = Physics.OverlapSphere(armature.transform.position, attackRange);
         foreach (var hitCollider in hitColliders)
         {
             if(hitCollider.CompareTag("enemy")){

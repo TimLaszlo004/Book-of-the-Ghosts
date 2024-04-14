@@ -13,8 +13,12 @@ public class DemonController : MonoBehaviour
     [SerializeField] private float looseSight = 60f;
     [SerializeField] private float spellShockTime = 1f;
     private float runningSpellShockTime = 0.25f;
+    [SerializeField] private GameObject destroyObj;
     [Header("Updating")]
     [SerializeField] private float updateInterval = 0.1f;
+    [SerializeField] private float screamInterval = 5f;
+    [SerializeField] private AudioSource screamAudio;
+    [SerializeField] private AudioSource biteAudio;
     private bool updateOn = false;
 
     private bool isAttacking = false;
@@ -22,7 +26,14 @@ public class DemonController : MonoBehaviour
     void Start()
     {
         FakeUpdateCaller();
+        InvokeRepeating("scream", 0.1f, screamInterval);
     }
+
+    void scream(){
+        screamAudio.Play();
+    }
+
+    
 
 
     void Update()
@@ -35,8 +46,16 @@ public class DemonController : MonoBehaviour
         
         // go towards player if attacking
         if(isAttacking){
+            float dist = General.Distance3(transform.position, PlayerLogic.position);
             //chase player
-            transform.position = Vector3.Lerp(transform.position, PlayerLogic.position, (1f/General.Distance3(transform.position, PlayerLogic.position))*speed*Time.deltaTime);
+            if(dist > 0.5f){
+                transform.position = Vector3.Lerp(transform.position, PlayerLogic.position, (1f/dist)*speed*Time.deltaTime);
+            }
+
+            transform.rotation = Quaternion.LookRotation(PlayerLogic.position-transform.position, Vector3.up);
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+
+
             // transform.position = Vector3.Lerp(transform.position, PlayerLogic.position, speed*Time.deltaTime); // (this is cheaper, but not linear --> stress test will decide)
         }
     }
@@ -58,6 +77,8 @@ public class DemonController : MonoBehaviour
         attackStatusUpdate();
         if(General.Distance3(transform.position, PlayerLogic.position) < biteRange){
             PlayerLogic.health -= damage;
+            if(!biteAudio.isPlaying)
+                biteAudio.Play();
         }
     }
 
@@ -97,7 +118,8 @@ public class DemonController : MonoBehaviour
     }
 
     void die(){
-        Destroy(gameObject);
+        Instantiate(destroyObj, transform.position, transform.rotation);
+        Destroy(gameObject, spellShockTime);
     }
 
 }
