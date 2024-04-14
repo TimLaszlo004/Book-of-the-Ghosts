@@ -80,6 +80,7 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void attack(DemonColor color){
+        Debug.Log("nyami");
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
         foreach (var hitCollider in hitColliders)
         {

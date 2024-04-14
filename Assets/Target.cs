@@ -21,6 +21,7 @@ public class Target : MonoBehaviour
             }
             else{
                 GameplayRegister.Instance.isTargetReached = true;
+                GameplayRegister.Instance.setTargetFlag(GameplayRegister.Instance.startPoint.position);
                 dissolve();
             }
         }

@@ -31,4 +31,14 @@ public class UIController : MonoBehaviour
     public void restart(){
         GameplayRegister.Instance.restart();
     }
+
+
+    public void pauseToggle(){
+        if(Time.timeScale > 0){
+            Time.timeScale = 0f;
+        }
+        else{
+            Time.timeScale = 1f;
+        }
+    }
 }
