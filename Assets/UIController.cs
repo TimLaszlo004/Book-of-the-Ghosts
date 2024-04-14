@@ -27,4 +27,8 @@ public class UIController : MonoBehaviour
         healthSlider.value = value;
         healthSliderImage.color = healthSliderColor.Evaluate(value/100f); // bit hard coded!
     }
+
+    public void restart(){
+        GameplayRegister.Instance.restart();
+    }
 }
