@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Gradient healthSliderColor;
     [SerializeField] private Image healthSliderImage;
+    [SerializeField] private PlayerInput input;
+    [SerializeField] private GameObject panel;
+
 
     public static UIController Instance { get; private set; }
     
@@ -36,9 +40,17 @@ public class UIController : MonoBehaviour
     public void pauseToggle(){
         if(Time.timeScale > 0){
             Time.timeScale = 0f;
+            input.enabled = false;
+            panel.SetActive(true);
         }
         else{
             Time.timeScale = 1f;
+            input.enabled = true;
+            panel.SetActive(false);
         }
+    }
+
+    public void start(){
+        input.enabled = true;
     }
 }

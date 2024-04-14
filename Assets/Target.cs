@@ -15,9 +15,6 @@ public class Target : MonoBehaviour
                     GameplayRegister.Instance.isSuccess = true;
                     GameplayRegister.Instance.win();
                 }
-                else{
-                    Debug.Log("First get the key");
-                }
             }
             else{
                 GameplayRegister.Instance.isTargetReached = true;
