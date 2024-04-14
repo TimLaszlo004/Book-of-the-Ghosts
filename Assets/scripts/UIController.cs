@@ -62,4 +62,6 @@ public class UIController : MonoBehaviour
     public void win(){
         winPanel.SetActive(true);
     }
+
+    
 }
