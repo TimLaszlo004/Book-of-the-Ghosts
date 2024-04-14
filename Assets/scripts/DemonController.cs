@@ -19,18 +19,45 @@ public class DemonController : MonoBehaviour
     [SerializeField] private float screamInterval = 5f;
     [SerializeField] private AudioSource screamAudio;
     [SerializeField] private AudioSource biteAudio;
+
+    [Header("colors")]
+    [SerializeField] private Material red;
+    [SerializeField] private Material blue;
+    [SerializeField] private Material green;
+    [SerializeField] private Material white;
+    [SerializeField] private GameObject holder;
+
     private bool updateOn = false;
 
     private bool isAttacking = false;
 
     void Start()
     {
+        colorUpdate();
         FakeUpdateCaller();
         InvokeRepeating("scream", 0.1f, screamInterval);
     }
 
     void scream(){
         screamAudio.Play();
+    }
+
+    void colorUpdate(){
+        switch(lifeStack[0]){
+            case DemonColor.Red:
+                holder.GetComponent<Renderer>().material = red;
+                break;
+            case DemonColor.Blue:
+                holder.GetComponent<Renderer>().material = blue;
+                break;
+            case DemonColor.Green:
+                holder.GetComponent<Renderer>().material = green;
+                break;
+            case DemonColor.White:
+                holder.GetComponent<Renderer>().material = white;
+                break;
+
+        }
     }
 
     
@@ -114,6 +141,7 @@ public class DemonController : MonoBehaviour
             if(lifeStack.Count == 0){
                 die();
             }
+            colorUpdate();
         }
     }
 
