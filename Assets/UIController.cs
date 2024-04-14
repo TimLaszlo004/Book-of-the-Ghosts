@@ -10,13 +10,15 @@ public class UIController : MonoBehaviour
     [SerializeField] private Gradient healthSliderColor;
     [SerializeField] private Image healthSliderImage;
     [SerializeField] private PlayerInput input;
-    [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject winPanel;
 
 
     public static UIController Instance { get; private set; }
     
     private void Awake() 
     { 
+        Time.timeScale = 0f;
         if (Instance != null && Instance != this) 
         { 
             Destroy(this);
@@ -34,6 +36,7 @@ public class UIController : MonoBehaviour
 
     public void restart(){
         GameplayRegister.Instance.restart();
+        winPanel.SetActive(false);
     }
 
 
@@ -41,16 +44,22 @@ public class UIController : MonoBehaviour
         if(Time.timeScale > 0){
             Time.timeScale = 0f;
             input.enabled = false;
-            panel.SetActive(true);
+            menuPanel.SetActive(true);
         }
         else{
             Time.timeScale = 1f;
             input.enabled = true;
-            panel.SetActive(false);
+            menuPanel.SetActive(false);
         }
     }
 
     public void start(){
+        winPanel.SetActive(false);
         input.enabled = true;
+        Time.timeScale = 1f;
+    }
+
+    public void win(){
+        winPanel.SetActive(true);
     }
 }

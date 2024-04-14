@@ -47,6 +47,7 @@ public class GameplayRegister : MonoBehaviour
 
     public void win(){
         isEnded = true;
+        UIController.Instance.win();
 
     }
 
