@@ -6,6 +6,7 @@ public class Target : MonoBehaviour
 {
     [Tooltip("If isGate then it is at the gate, else it is the target with the key")]
     [SerializeField] private bool isGate = true;
+    [SerializeField] private GameObject key;
 
     void OnTriggerEnter(Collider obj)
     {
@@ -25,6 +26,6 @@ public class Target : MonoBehaviour
     }
 
     void dissolve(){
-        Destroy(gameObject);
+        Destroy(key);
     }
 }

@@ -29,10 +29,34 @@ public class GameplayRegister : MonoBehaviour
         { 
             Instance = this;
         }
-        startPoint = startPoints[(int)(startPoints.Length * Random.value)];
-        targetPoint = targetPoints[(int)(targetPoints.Length * Random.value)];
+        setStart();
         targetIndicator = GetComponent<LineRenderer>();
         setTargetFlag(targetPoint.position);
+    }
+
+    void setStart(){
+        int s = (int)(startPoints.Length * Random.value);
+        int e = (int)(targetPoints.Length * Random.value);
+        startPoint = startPoints[s];
+        targetPoint = targetPoints[e];
+
+        for(int i = 0; i<startPoints.Length; i++){
+            if(i != s){
+                startPoints[i].gameObject.SetActive(false);
+            }
+            else{
+                startPoints[i].gameObject.SetActive(true);
+            }
+        }
+
+        for(int i = 0; i<targetPoints.Length; i++){
+            if(i != e){
+                targetPoints[i].gameObject.SetActive(false);
+            }
+            else{
+                targetPoints[i].gameObject.SetActive(true);
+            }
+        }
     }
 
     public void setTargetFlag(Vector3 point){
