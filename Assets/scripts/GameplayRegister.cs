@@ -10,6 +10,8 @@ public class GameplayRegister : MonoBehaviour
     public bool isTargetReached = false;
     public bool isSuccess = false;
 
+    public List<float> demonScales = new List<float>();
+
     private LineRenderer targetIndicator;
 
     public Transform startPoint;

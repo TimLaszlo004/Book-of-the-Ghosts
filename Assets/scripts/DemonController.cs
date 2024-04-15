@@ -43,6 +43,14 @@ public class DemonController : MonoBehaviour
     }
 
     void colorUpdate(){
+        float id;
+        if(lifeStack.Count > GameplayRegister.Instance.demonScales.Count){
+            id = GameplayRegister.Instance.demonScales[GameplayRegister.Instance.demonScales.Count-1];
+        }
+        else{
+            id = GameplayRegister.Instance.demonScales[lifeStack.Count-1];
+        }
+        transform.localScale = Vector3.one * id;
         switch(lifeStack[0]){
             case DemonColor.Red:
                 holder.GetComponent<Renderer>().material = red;
@@ -134,6 +142,7 @@ public class DemonController : MonoBehaviour
     }
 
     public void getSpell(DemonColor color){
+        if(lifeStack.Count == 0){return;}
         if(color.Equals(lifeStack[0])){
             lifeStack.RemoveAt(0);
             runningSpellShockTime = spellShockTime;
@@ -141,11 +150,14 @@ public class DemonController : MonoBehaviour
             if(lifeStack.Count == 0){
                 die();
             }
-            colorUpdate();
+            else{
+                colorUpdate();
+            }
         }
     }
 
     void die(){
+        DemonGenerator.count--;
         Instantiate(destroyObj, transform.position, transform.rotation);
         Destroy(gameObject, spellShockTime);
     }
