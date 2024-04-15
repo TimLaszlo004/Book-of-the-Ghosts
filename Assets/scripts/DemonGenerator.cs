@@ -23,7 +23,7 @@ public class DemonGenerator : MonoBehaviour
     void updateVariables(){
         switch(UIController.Instance.mode){
             case 1:
-                DemonController.speed = 1.5f;
+                DemonController.speed = 2.5f;
                 range = 100f;
                 rate = 2f;
                 maxPopulation = 2;
@@ -33,7 +33,7 @@ public class DemonGenerator : MonoBehaviour
                 rageChance = 0f;
                 break;
             case 2:
-                DemonController.speed = 2f;
+                DemonController.speed = 3f;
                 range = 100f;
                 rate = 0.2f;
                 maxPopulation = 10;
@@ -43,7 +43,7 @@ public class DemonGenerator : MonoBehaviour
                 rageChance = 0.08f;
                 break;
             case 3:
-                DemonController.speed = 2.5f;
+                DemonController.speed = 3.5f;
                 range = 100f;
                 rate = 0.2f;
                 maxPopulation = 20;
@@ -53,7 +53,7 @@ public class DemonGenerator : MonoBehaviour
                 rageChance = 0.15f;
                 break;
             case 4:
-                DemonController.speed = 3.5f;
+                DemonController.speed = 5.5f;
                 range = 100f;
                 rate = 0.2f;
                 maxPopulation = 35;
@@ -63,7 +63,7 @@ public class DemonGenerator : MonoBehaviour
                 rageChance = 0.25f;
                 break;
             case 5:
-                DemonController.speed = 5f;
+                DemonController.speed = 8f;
                 range = 100f;
                 rate = 0.2f;
                 maxPopulation = 50;
