@@ -39,12 +39,14 @@ public class GameplayRegister : MonoBehaviour
 
     public void playerDied(){
         // isEnded = true;
+        restart();
     }
 
     public void restart(){
         isEnded = false;
         isTargetReached = false;
         isSuccess = false;
+        setTargetFlag(targetPoint.position);
     }
 
     public void win(){
