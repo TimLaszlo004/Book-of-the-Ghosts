@@ -20,6 +20,65 @@ public class DemonGenerator : MonoBehaviour
         Spawn(rate);
     }
 
+    void updateVariables(){
+        switch(UIController.Instance.mode){
+            case 1:
+                DemonController.speed = 1.5f;
+                range = 100f;
+                rate = 2f;
+                maxPopulation = 2;
+                averageLength = 1;
+                randomLength = 0;
+                rageChanceInit = 0f;
+                rageChance = 0f;
+                break;
+            case 2:
+                DemonController.speed = 2f;
+                range = 100f;
+                rate = 0.2f;
+                maxPopulation = 10;
+                averageLength = 2;
+                randomLength = 1;
+                rageChanceInit = 0.08f;
+                rageChance = 0.08f;
+                break;
+            case 3:
+                DemonController.speed = 2.5f;
+                range = 100f;
+                rate = 0.2f;
+                maxPopulation = 20;
+                averageLength = 3;
+                randomLength = 2;
+                rageChanceInit = 0.15f;
+                rageChance = 0.15f;
+                break;
+            case 4:
+                DemonController.speed = 3.5f;
+                range = 100f;
+                rate = 0.2f;
+                maxPopulation = 35;
+                averageLength = 4;
+                randomLength = 2;
+                rageChanceInit = 0.25f;
+                rageChance = 0.25f;
+                break;
+            case 5:
+                DemonController.speed = 5f;
+                range = 100f;
+                rate = 0.2f;
+                maxPopulation = 50;
+                averageLength = 6;
+                randomLength = 4;
+                rageChanceInit = 0.4f;
+                rageChance = 0.4f;
+                break;
+        }
+
+        CancelInvoke("one");
+        Spawn(rate);
+        
+    }
+
 
     public void Spawn(float r){
         InvokeRepeating("one", r, r);

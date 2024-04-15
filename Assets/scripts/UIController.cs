@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Gradient healthIndicatorGradient;
     [SerializeField] private Image healthIndicator;
     [SerializeField] private TMP_Text difficultyText;
+    public int mode = 3;
 
 
     public static UIController Instance { get; private set; }
@@ -61,6 +62,7 @@ public class UIController : MonoBehaviour
 
     public void start(){
         winPanel.SetActive(false);
+        PlayerLogic.setPos = true;
         input.enabled = true;
         Time.timeScale = 1f;
     }
@@ -84,18 +86,23 @@ public class UIController : MonoBehaviour
         switch(level){
             case 1:
                 difficultyText.text = "Chosen difficulty: I'M A BABY";
+                mode = 1;
                 break;
             case 2:
                 difficultyText.text = "Chosen difficulty: EASY";
+                mode = 2;
                 break;
             case 3:
                 difficultyText.text = "Chosen difficulty: NORMAL";
+                mode = 3;
                 break;
             case 4:
                 difficultyText.text = "Chosen difficulty: HARD";
+                mode = 4;
                 break;
             case 5:
                 difficultyText.text = "Chosen difficulty: IMPOSSIBLE";
+                mode = 5;
                 break;
         }
     }

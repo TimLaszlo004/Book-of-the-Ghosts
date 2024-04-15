@@ -6,7 +6,7 @@ public class DemonController : MonoBehaviour
 {
     [Header("Logic")]
     [SerializeField] private List<DemonColor> lifeStack = new List<DemonColor>(); // queue would be better, but I need to be fast now
-    [SerializeField] private float speed = 5f;
+    public static float speed = 2.5f;
     [SerializeField] private float damage = 4f;
     [SerializeField] private float biteRange = 0.75f;
     [SerializeField] private float purgeRange = 200f;

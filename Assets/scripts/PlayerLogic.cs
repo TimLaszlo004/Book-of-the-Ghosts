@@ -28,14 +28,21 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private StarterAssetsInputs inputs;
     [SerializeField] private Animator anim;
 
+    public static bool setPos = false;
+
     void Start()
     {
         armature.transform.position = GameplayRegister.Instance.startPoint.position;
+        Debug.Log(GameplayRegister.Instance.startPoint.position);
         health = initHealth;
         FakeUpdateCaller();
     }
     void Update()
     {
+        if(setPos){
+            armature.transform.position = GameplayRegister.Instance.startPoint.position;
+            setPos = false;
+        }
         // mostly input handling
         // Debug.Log(inputs.spellId);
         if(GameplayRegister.Instance.isEnded){return;}
