@@ -14,6 +14,7 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private float attackRange = 5f;
     [Header("Spell Management")]
     [SerializeField] private float reloadTime = 0.15f;
+    [SerializeField] private Transform placement;
     private float runningReload = 0f;
 
     private bool updateOn = false;
@@ -54,22 +55,22 @@ public class PlayerLogic : MonoBehaviour
                     break;
                 case 1:
                     attack(DemonColor.Red);
-                    Instantiate(red, armature.transform.position, armature.transform.rotation);
+                    Instantiate(red, placement.position, placement.rotation);
                     runningReload = reloadTime;
                     break;
                 case 2:
                     attack(DemonColor.Blue);
-                    Instantiate(blue, armature.transform.position, armature.transform.rotation);
+                    Instantiate(blue, placement.position, placement.rotation);
                     runningReload = reloadTime;
                     break;
                 case 3:
                     attack(DemonColor.Green);
-                    Instantiate(green, armature.transform.position, armature.transform.rotation);
+                    Instantiate(green, placement.position, placement.rotation);
                     runningReload = reloadTime;
                     break;
                 case 4:
                     attack(DemonColor.White);
-                    Instantiate(white, armature.transform.position, armature.transform.rotation);
+                    Instantiate(white, placement.position, placement.rotation);
                     runningReload = reloadTime;
                     break;
             }

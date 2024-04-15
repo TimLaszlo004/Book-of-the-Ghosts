@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3941735828941195714}
   - component: {fileID: 4196247591022756629}
   - component: {fileID: 5291286754558745213}
+  - component: {fileID: 8729762441576903544}
   m_Layer: 0
   m_Name: deska obrecz wyzsza
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8729762441576903544
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395240846244279377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 44501786966365586, guid: a02e57c39bf4c2540b3fd94338e37e76, type: 3}
 --- !u!1 &4851760790510559112
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,9 +123,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4851760790510559112}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -63.85334, y: 34.7, z: -42.60963}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 60, y: 60, z: 60}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8314618759407361689}
@@ -118,8 +133,8 @@ Transform:
   - {fileID: 6786338583770857271}
   - {fileID: 3941735828941195714}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &9201101988944906903
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -181,6 +196,7 @@ GameObject:
   - component: {fileID: 8314618759407361689}
   - component: {fileID: 1988393818362394144}
   - component: {fileID: 6033378315341925638}
+  - component: {fileID: 6056693674079030422}
   m_Layer: 0
   m_Name: deska dol dluga
   m_TagString: Untagged
@@ -253,6 +269,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6056693674079030422
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061226431780966694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7526036420327929276, guid: a02e57c39bf4c2540b3fd94338e37e76, type: 3}
 --- !u!1 &5609217616531569846
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +294,7 @@ GameObject:
   - component: {fileID: 6786338583770857271}
   - component: {fileID: 7327295384296384484}
   - component: {fileID: 1136425674349804716}
+  - component: {fileID: 4634457226973824538}
   m_Layer: 0
   m_Name: deska obrecz
   m_TagString: Untagged
@@ -336,6 +367,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4634457226973824538
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609217616531569846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4872218683823423660, guid: a02e57c39bf4c2540b3fd94338e37e76, type: 3}
 --- !u!1 &6077659378516793789
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +392,7 @@ GameObject:
   - component: {fileID: 9127480623402851410}
   - component: {fileID: 609260591377490938}
   - component: {fileID: 2970409536250659159}
+  - component: {fileID: 7398429945017662435}
   m_Layer: 0
   m_Name: deska gora
   m_TagString: Untagged
@@ -419,3 +465,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7398429945017662435
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077659378516793789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4719559383887339091, guid: a02e57c39bf4c2540b3fd94338e37e76, type: 3}

@@ -9,6 +9,7 @@ public class DemonController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float damage = 4f;
     [SerializeField] private float biteRange = 0.75f;
+    [SerializeField] private float purgeRange = 200f;
     [SerializeField] private float eyeSight = 40f;
     [SerializeField] private float looseSight = 60f;
     [SerializeField] private float spellShockTime = 1f;
@@ -42,7 +43,11 @@ public class DemonController : MonoBehaviour
         screamAudio.Play();
     }
 
-    void colorUpdate(){
+    public void setLifeStack(List<DemonColor> l){
+        lifeStack = l;
+    }
+
+    public void colorUpdate(){
         float id;
         if(lifeStack.Count > GameplayRegister.Instance.demonScales.Count){
             id = GameplayRegister.Instance.demonScales[GameplayRegister.Instance.demonScales.Count-1];
@@ -110,10 +115,14 @@ public class DemonController : MonoBehaviour
 
     void FakeUpdate(){
         attackStatusUpdate();
-        if(General.Distance3(transform.position, PlayerLogic.position) < biteRange){
+        float dist = General.Distance3(transform.position, PlayerLogic.position);
+        if(dist < biteRange){
             PlayerLogic.health -= damage;
             if(!biteAudio.isPlaying)
                 biteAudio.Play();
+        }
+        else if(dist >= purgeRange){
+            die();
         }
     }
 
@@ -154,6 +163,11 @@ public class DemonController : MonoBehaviour
                 colorUpdate();
             }
         }
+        else{
+            if(Random.value < DemonGenerator.rageChance){
+                lifeStack.Add(color);
+            }
+        }
     }
 
     void die(){
@@ -161,5 +175,9 @@ public class DemonController : MonoBehaviour
         Instantiate(destroyObj, transform.position, transform.rotation);
         Destroy(gameObject, spellShockTime);
     }
+
+    // void OnTriggerEnter(Collider coll){
+    //     Debug.Log(coll.tag);
+    // }
 
 }

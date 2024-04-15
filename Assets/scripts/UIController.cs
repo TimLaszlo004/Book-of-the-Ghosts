@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -15,11 +16,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private Gradient healthIndicatorGradient;
     [SerializeField] private Image healthIndicator;
+    [SerializeField] private TMP_Text difficultyText;
 
 
     public static UIController Instance { get; private set; }
     
-    private void Awake() 
+    private void Awake()
     { 
         Time.timeScale = 0f;
         if (Instance != null && Instance != this) 
@@ -75,5 +77,30 @@ public class UIController : MonoBehaviour
 
     public void reload(){
         SceneManager.LoadScene(0);
+    }
+
+    public void difficulty(int level){
+        // TODO
+        switch(level){
+            case 1:
+                difficultyText.text = "Chosen difficulty: I'M A BABY";
+                break;
+            case 2:
+                difficultyText.text = "Chosen difficulty: EASY";
+                break;
+            case 3:
+                difficultyText.text = "Chosen difficulty: NORMAL";
+                break;
+            case 4:
+                difficultyText.text = "Chosen difficulty: HARD";
+                break;
+            case 5:
+                difficultyText.text = "Chosen difficulty: IMPOSSIBLE";
+                break;
+        }
+    }
+
+    public void setVolume(float volume){
+        AudioListener.volume = volume;
     }
 }
