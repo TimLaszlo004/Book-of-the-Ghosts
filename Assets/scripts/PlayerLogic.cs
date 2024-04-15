@@ -25,6 +25,7 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private GameObject white;
 
     [SerializeField] private StarterAssetsInputs inputs;
+    [SerializeField] private Animator anim;
 
     void Start()
     {
@@ -48,6 +49,9 @@ public class PlayerLogic : MonoBehaviour
         else{
             runningReload = 0f;
             switch(inputs.spellId){
+                case 0:
+                    anim.SetBool("spell", false);
+                    break;
                 case 1:
                     attack(DemonColor.Red);
                     Instantiate(red, armature.transform.position, armature.transform.rotation);
@@ -90,6 +94,7 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void attack(DemonColor color){
+        anim.SetBool("spell", true);
         Collider[] hitColliders = Physics.OverlapSphere(armature.transform.position, attackRange);
         foreach (var hitCollider in hitColliders)
         {

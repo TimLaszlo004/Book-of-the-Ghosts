@@ -22,7 +22,7 @@ public class DemonGenerator : MonoBehaviour
 
     void one(){
         if(count < maxPopulation){
-            Vector3 pos = PlayerLogic.position + new Vector3((Random.value-0.5f)*range, (Random.value-0.5f)*range, (Random.value-0.5f)*range);
+            Vector3 pos = PlayerLogic.position + new Vector3((Random.value-0.5f)*range, (Random.value-0.25f)*range, (Random.value-0.5f)*range);
             Instantiate(ghost, pos, Quaternion.identity);
             count++;
         }
