@@ -3,7 +3,12 @@ guid: 95ad543d05b0f4c45a36e4dcda6f683e
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OldBook001_mat
+    second: {fileID: 2100000, guid: 7436ccffef82c9842be65bbc75f56208, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
