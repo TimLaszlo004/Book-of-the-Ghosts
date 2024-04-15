@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private PlayerInput input;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private Gradient healthIndicatorGradient;
+    [SerializeField] private Image healthIndicator;
 
 
     public static UIController Instance { get; private set; }
@@ -31,7 +34,8 @@ public class UIController : MonoBehaviour
 
     public void setSlider(float value){
         healthSlider.value = value;
-        healthSliderImage.color = healthSliderColor.Evaluate(value/100f); // bit hard coded!
+        healthSliderImage.color = healthSliderColor.Evaluate(value*0.01f); // bit hard coded!
+        setIndicator();
     }
 
     public void restart(){
@@ -63,5 +67,13 @@ public class UIController : MonoBehaviour
         winPanel.SetActive(true);
     }
 
-    
+    public void setIndicator(){
+        Color temp = healthIndicatorGradient.Evaluate(PlayerLogic.health * 0.01f);
+        temp.a = 1f - (PlayerLogic.health * 0.01f);
+        healthIndicator.color = temp;
+    }
+
+    public void reload(){
+        SceneManager.LoadScene(0);
+    }
 }
