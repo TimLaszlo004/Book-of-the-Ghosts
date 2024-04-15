@@ -176,7 +176,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 5
+    - _OutlineWidth: 12
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -184,7 +184,7 @@ Material:
     - _RimEnabled: 1
     - _RimLightAlign: -0.13
     - _RimLightSmoothness: 0.016
-    - _RimPower: 0.858
+    - _RimPower: 1
     - _SizeFalloff: 0
     - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
@@ -209,7 +209,7 @@ Material:
     - _pointA: 65
     - _pointB: 25
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}

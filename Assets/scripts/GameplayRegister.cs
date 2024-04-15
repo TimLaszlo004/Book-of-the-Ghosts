@@ -14,7 +14,9 @@ public class GameplayRegister : MonoBehaviour
 
     private LineRenderer targetIndicator;
 
+    public Transform[] startPoints;
     public Transform startPoint;
+    public Transform[] targetPoints;
     public Transform targetPoint;
     
     private void Awake() 
@@ -27,6 +29,8 @@ public class GameplayRegister : MonoBehaviour
         { 
             Instance = this;
         }
+        startPoint = startPoints[(int)(startPoints.Length * Random.value)];
+        targetPoint = targetPoints[(int)(targetPoints.Length * Random.value)];
         targetIndicator = GetComponent<LineRenderer>();
         setTargetFlag(targetPoint.position);
     }

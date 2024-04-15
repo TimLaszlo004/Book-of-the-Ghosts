@@ -17,6 +17,7 @@ public class spawner : MonoBehaviour
             if(Physics.Raycast(pos, Vector3.down, out hit, 5000f)){
                 transform.GetChild(i).position = new Vector3(pos.x, hit.point.y, pos.z);
             }
+            transform.GetChild(i).rotation = Quaternion.Euler(Random.Range(0f,360f), Random.Range(0f,360f), Random.Range(0f,360f));
         }
     }
 
